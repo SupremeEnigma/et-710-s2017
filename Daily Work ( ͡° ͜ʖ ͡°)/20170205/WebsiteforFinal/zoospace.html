@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/hero.css">
     <link rel="stylesheet" href="css/content.css">
     <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/todo.css">
   </head>
   <body>
 
@@ -113,6 +114,20 @@
           <li><a href="#"><i class="fa fa-twitter-square" aria-hidden="true"></i></a></li>
         </ul>
       </div>
+      <!doctype html>
+      <html ng-app>
+      <head>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    </head>
+    <body>
+      <div>
+        <label>Name:</label>
+        <input type="text" ng-model="yourName" placeholder="Enter a name here">
+        <hr>
+        <h1>Hello {{yourName}}!</h1>
+      </div>
+    </body>
+    </html>
       <div class="medium-4 columns">
         <h4 class="marketing-site-footer-title">Contact Info</h4>
         <div class="marketing-site-footer-block">
@@ -127,6 +142,34 @@
           <i class="fa fa-envelope-o" aria-hidden="true"></i>
           <p>mois575@gmail.com</p>
         </div>
+        <!doctype html>
+        <html ng-app="todoApp">
+        <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+        <script src="todo.js"></script>
+        <link rel="stylesheet" href="todo.css">
+      </head>
+      <body>
+        <h2>What's your favorite type of species?</h2>
+        <div ng-controller="TodoListController as todoList">
+          <span>{{todoList.remaining()}} of {{todoList.todos.length}} remaining</span>
+          [ <a href="" ng-click="todoList.archive()">archive</a> ]
+          <ul class="unstyled">
+            <li ng-repeat="todo in todoList.todos">
+              <label class="checkbox">
+                <input type="checkbox" ng-model="todo.done">
+                <span class="done-{{todo.done}}">{{todo.text}}</span>
+              </label>
+            </li>
+          </ul>
+          <form ng-submit="todoList.addTodo()">
+            <input type="text" ng-model="todoList.todoText"  size="30"
+            placeholder="add new todo here">
+            <input class="btn-primary" type="submit" value="add">
+          </form>
+        </div>
+      </body>
+      </html>
       </div>
       <div class="medium-4 columns">
         <h4 class="marketing-site-footer-title">Instagram</h4>
@@ -175,6 +218,7 @@
     <script src="js/vendor/jquery.js"></script>
     <script src="js/vendor/what-input.js"></script>
     <script src="js/vendor/foundation.js"></script>
+    <script src="js/todo.js"></script>
     <script src="js/app.js"></script>
   </body>
 </html>
